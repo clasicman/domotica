@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+ 	<link href="main.css"
+      rel="stylesheet" type="text/css">
+	<script>
+	// Array con todas las imágenes que deseamos que se vayan cambiando a
+	// cada clic
+	var imagenes1=Array("img_10.jpeg","img_11.jpeg");
+	var url1=Array("http://192.168.43.140/?LED=YYYYYYYY","http://192.168.43.140/?LED=XXXXXXXX");
+	var imagenes2=Array("img_20.jpeg","img_21.jpeg");
+	var url2=Array("http://192.168.43.140/?LED=KKKKKKKK","http://192.168.43.140/?LED=ZZZZZZZZ");
+	var imagenes3=Array("img_30.jpeg","img_31.jpeg");
+	var url3=Array("http://192.168.43.140/?LED=JJJJJJJJ","http://192.168.43.140/?LED=NNNNNNNNN");
+	var imagenVisible1=0;
+	var imagenVisible2=0;
+	var imagenVisible3=0;
+ 
+	// Función que cambia la imagen actual por la siguiente
+	function cambiar1(img)
+	{imagenVisible1++;
+		if(imagenVisible1>=imagenes1.length)
+		{
+			imagenVisible1=0;
+		}
+		img.src=imagenes1[imagenVisible1];
+		cargarSiguienteImagen1();
+		url1A.href=url1[imagenVisible1];
+	}
+	function cargarSiguienteImagen1()
+	{
+		if((imagenVisible1+1)<imagenes1.length)
+		{
+			console.log(imagenVisible1+1);
+			var imgTmp=new Image();
+			imgTmp.src=imagenes1[imagenVisible1+1];
+		}
+	} 
+	window.onload=function() {
+		cargarSiguienteImagen1();
+	}
+	function cambiar2(img)
+	{imagenVisible2++;
+		if(imagenVisible2>=imagenes2.length)
+		{
+			imagenVisible2=0;
+		}
+		img.src=imagenes2[imagenVisible2];
+		cargarSiguienteImagen2();
+		url2A.href=url2[imagenVisible2];
+	}
+	function cargarSiguienteImagen2()
+	{
+		if((imagenVisible2+2)<imagenes2.length)
+		{
+			console.log(imagenVisible2+2);
+			var imgTmp=new Image();
+			imgTmp.src=imagenes2[imagenVisible2+2];
+		}
+	}
+	window.onload=function() {
+		cargarSiguienteImagen2();
+	}
+	function cambiar3(img)
+	{imagenVisible3++;
+		if(imagenVisible3>=imagenes3.length)
+		{
+			imagenVisible3=0;
+		}
+		img.src=imagenes3[imagenVisible3];
+		cargarSiguienteImagen3();
+		url3A.href=url3[imagenVisible3];
+	}
+	function cargarSiguienteImagen3()
+	{
+		if((imagenVisible3+3)<imagenes3.length)
+		{
+			console.log(imagenVisible3+3);
+			var imgTmp=new Image();
+			imgTmp.src=imagenes3[imagenVisible3+3];
+		}
+	}
+window.onload=function() {
+		cargarSiguienteImagen3();
+	}
+	</script>
+	<style>
+	img {cursor:pointer;}
+	</style>
+</head>
+ 
+<body>
+<h1>Sistema de Luces</h1>
+ <table border="2px"> <!-- Lo cambiaremos por CSS -->
+ <tr>
+ <td rowspa="2"><a href="#" id=url1A ><img src="img_10.jpeg" onclick="cambiar1(this)"></td>
+ <td> <a href="#" id=url3A ><img src="img_30.jpeg" onclick="cambiar3(this)"></td>
+ <td rowspa="2"> <a href="#" id=url2A ><img src="img_20.jpeg" onclick="cambiar2(this)"></td>
+ </tr>
+ <tr>
+ <td ></td>
+ <td colspa="2"><img src="estancia.jpg"</td>
+ </tr>
+ </table>
+</body>
+</html>

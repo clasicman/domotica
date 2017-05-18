@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>     
+		<meta charset="utf-8">  
+        <title>Ejemplo del uso de tablas- aprenderaprogramar.com</title>
+    </head>
+ <body>
+ <table border="2px"> <!-- Lo cambiaremos por CSS -->
+ <tr>
+ <td rowspa="2">dormitorio 1</td>
+ <td>baño</td>
+ <td rowspa="2"><img src="img_1.jpeg" onclick="tocar()+enviar()"></td>
+ </tr>
+ <tr>
+ <td ></td>
+ 
+ <td colspa="2">estancia</td>
+ </tr>
+
+ </table>
+ <script>
+ if(Ti.App.Properties.getBool("encendido")==null) Ti.App.Properties.setBool("encendido",false);
+ if(Ti.App.Properties.getBool("encendido")==false){
+	 img.src='img_1.jpeg';
+	} else {
+	 img.src='img_2.jpeg';	
+	}
+function tocar(){
+	if(Ti.App.Properties.getBool("encendido")==false){
+	 var url = 'http://192.168.0.100/?LED=F';
+	 Ti.App.Properties.setBool("encendido",true);
+	 ventana.backgroundImage='bombillaencendida.jpg';
+	} else {
+	 var url = 'http://192.168.0.100/?LED=T';
+	 Ti.App.Properties.setBool("encendido",false);
+	 ventana.backgroundImage='bombillaapagada.jpg';	
+	}
+ var client = Ti.Network.createHTTPClient({
+     onerror : function(e) {
+         alert('error');
+     },
+     timeout : 5000
+ });
+ function enviar(){
+ client.open("GET", url);
+//Mandar la petición
+ client.send(); };
+ </script>
